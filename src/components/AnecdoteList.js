@@ -14,7 +14,11 @@ const AnecdoteList = props => {
         },5000)
     }
 
-    const anecdotes = useSelector(({anecdotes}) => {
+    const anecdotes = useSelector(({anecdotes,filterText}) => {
+        if(anecdotes!=='') {
+            const re = new RegExp(filterText)
+            anecdotes = anecdotes.filter(anecdote => re.test(anecdote.content))
+        }
         const newstate = [...anecdotes].sort((a,b)=>b.votes-a.votes)
         return newstate
     })
