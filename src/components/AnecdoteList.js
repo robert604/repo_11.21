@@ -8,8 +8,8 @@ const AnecdoteList = props => {
         dispatch(voteForAnecdote(id))
     }
 
-    const anecdotes = useSelector(state => {
-        const newstate = [...state].sort((a,b)=>b.votes-a.votes)
+    const anecdotes = useSelector(({anecdotes}) => {
+        const newstate = [...anecdotes].sort((a,b)=>b.votes-a.votes)
         return newstate
     })
 
