@@ -1,10 +1,20 @@
-const initialMessage = 'This is a notification'
 
-const notificationReducer = (state=initialMessage,action) => {
-    console.log('notificationreducer',action)
+const initialState = {
+    message: 'This is a notification',
+    isVisible: false
+}
+
+const notificationReducer = (state=initialState,action) => {
+
     switch(action.type) {
         case 'SET_NOTIFICATION':
-        return action.message
+            //StartNotificationTimer()
+            return {
+                message:action.message,
+                isVisible:true
+            }
+        case 'TURN_OFF_NOTIFICATION':
+            return {...state,isVisible:false}
     }
     return state
 }
@@ -13,6 +23,12 @@ export const setNotification = message => {
     return {
         type: 'SET_NOTIFICATION',
         message: message
+    }
+}
+
+export const turnOffNotification = () => {
+    return {
+        type: 'TURN_OFF_NOTIFICATION'
     }
 }
 

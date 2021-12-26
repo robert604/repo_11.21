@@ -20,7 +20,6 @@ const asObject = (anecdote) => {
 const initialState = anecdotesAtStart.map(asObject)
 
 const anecdoteReducer = (state = initialState, action) => {
-  console.log('anecdotereducer ', action)
   let newstate
   switch(action.type) {
     case 'VOTE':

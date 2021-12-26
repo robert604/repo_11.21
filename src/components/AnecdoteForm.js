@@ -1,5 +1,6 @@
 import { useDispatch,useSelector } from "react-redux"
 import { addNewAnecdote } from "../reducers/anecdoteReducer"
+import { setNotification,turnOffNotification } from "../reducers/notificationReducer"
 
 const AnecdoteForm = (props) => {
     const dispatch = useDispatch()
@@ -8,6 +9,10 @@ const AnecdoteForm = (props) => {
         event.preventDefault()
         const content = event.target.anecdote_text.value  
         dispatch(addNewAnecdote(content))
+        dispatch(setNotification(`You added: ${content}`))
+        setTimeout(() => {
+            dispatch(turnOffNotification())
+        },5000)
     }
 
     return(
