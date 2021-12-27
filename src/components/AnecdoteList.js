@@ -9,10 +9,7 @@ const AnecdoteList = props => {
     const vote = (anecdote) => {
         const {id,content} = anecdote
         dispatch(voteForAnecdote(anecdote))
-        dispatch(setNotification(`You voted for: ${content}`))
-        setTimeout(() => {
-            dispatch(turnOffNotification())
-        },5000)
+        dispatch(setNotification(`You voted for: ${content}`,5))
     }
 
     const anecdotes = useSelector(({anecdotes,filterText}) => {

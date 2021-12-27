@@ -19,11 +19,21 @@ const notificationReducer = (state=initialState,action) => {
     return state
 }
 
-export const setNotification = message => {
-    return {
-        type: 'SET_NOTIFICATION',
-        message: message
+export const setNotification = (message,seconds) => {
+    const ms = seconds*1000
+    return async dispatch => {
+        dispatch({
+            type: 'SET_NOTIFICATION',
+            message: message
+        })
+        await new Promise(resolve=>setTimeout(resolve,ms))
+        dispatch({
+            type: 'TURN_OFF_NOTIFICATION'
+        })
+
     }
+
+
 }
 
 export const turnOffNotification = () => {
