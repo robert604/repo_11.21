@@ -6,8 +6,9 @@ import { setNotification,turnOffNotification } from "../reducers/notificationRed
 
 const AnecdoteList = props => {
     const dispatch = useDispatch()    
-    const vote = ({id,content}) => {
-        dispatch(voteForAnecdote(id))
+    const vote = (anecdote) => {
+        const {id,content} = anecdote
+        dispatch(voteForAnecdote(anecdote))
         dispatch(setNotification(`You voted for: ${content}`))
         setTimeout(() => {
             dispatch(turnOffNotification())
