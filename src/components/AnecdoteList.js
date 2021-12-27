@@ -15,7 +15,8 @@ const AnecdoteList = props => {
     }
 
     const anecdotes = useSelector(({anecdotes,filterText}) => {
-        if(anecdotes!=='') {
+        //console.log('in use selector',anecdotes)
+        if(filterText!=='') {
             const re = new RegExp(filterText)
             anecdotes = anecdotes.filter(anecdote => re.test(anecdote.content))
         }

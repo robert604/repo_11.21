@@ -1,3 +1,5 @@
+import anecdoteServices from '../services/anecdotes'
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -9,25 +11,31 @@ const anecdotesAtStart = [
 
 const getId = () => (100000 * Math.random()).toFixed(0)
 
-const asObject = (anecdote) => {
+export const asObject = (anecdote) => {
   return {
     content: anecdote,
-    id: getId(),
+    //id: getId(),
     votes: 0
   }
 }
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const anecdoteReducer = (state = initialState, action) => {
+const anecdoteReducer = (state = [], action) => {
+  console.log('anecdotereducer',action)
   let newstate
   switch(action.type) {
     case 'VOTE':
       newstate = state.map(anecdote=>anecdote.id===action.id ? {...anecdote,votes:anecdote.votes+1} : anecdote)
       return newstate
     case 'NEW':
-      const newAnecdote = asObject(action.content)
+      const newAnecdote = action.content
+      console.log('newanecdote',newAnecdote)
       newstate = state.concat(newAnecdote)
+      return newstate
+    case 'INITIALIZE_ANECDOTES':
+      newstate = action.allAnecdotes
+      console.log('initializing',newstate)      
       return newstate
   }
 
@@ -45,6 +53,13 @@ export const addNewAnecdote = content => {
   return {
     type: 'NEW',
     content: content
+  }
+}
+
+export const initializeAnecdotes = all => {
+  return {
+    type: 'INITIALIZE_ANECDOTES',
+    allAnecdotes: all
   }
 }
 
