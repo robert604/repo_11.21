@@ -1,10 +1,9 @@
-import {useDispatch} from 'react-redux'
+import {connect} from 'react-redux'
 import {setFilter} from '../reducers/filterReducer'
 
 const FilterForm = props => {
-  const dispatch = useDispatch()
   const filterTextChange = (event) => {
-    dispatch(setFilter(event.target.value))
+    props.setFilter(event.target.value)
   }
 
   return(
@@ -14,4 +13,16 @@ const FilterForm = props => {
   )
 }
 
-export default FilterForm
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = {
+  setFilter
+}
+
+const ConnectedFilterForm = connect(mapStateToProps,mapDispatchToProps)(FilterForm)
+
+export default ConnectedFilterForm
