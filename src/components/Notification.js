@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 const Notification = (props) => {
-  console.log('notification props',props)
+
   const {message,isVisible} = props
   const style = {
     border: 'solid',

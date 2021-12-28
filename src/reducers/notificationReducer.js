@@ -5,7 +5,6 @@ const initialState = {
 }
 
 const notificationReducer = (state=initialState,action) => {
-    console.log('notification reducer',action)
     switch(action.type) {
         case 'SET_NOTIFICATION':
             //StartNotificationTimer()
