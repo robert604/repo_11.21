@@ -18,6 +18,8 @@ const notificationReducer = (state=initialState,action) => {
     return state
 }
 
+let latestProm = null
+
 export const setNotification = (message,seconds) => {
     const ms = seconds*1000
     return async dispatch => {
@@ -25,10 +27,14 @@ export const setNotification = (message,seconds) => {
             type: 'SET_NOTIFICATION',
             message: message
         })
-        await new Promise(resolve=>setTimeout(resolve,ms))
-        dispatch({
-            type: 'TURN_OFF_NOTIFICATION'
-        })
+        const prom = new Promise(resolve=>setTimeout(resolve,ms))
+        latestProm = prom
+        await prom
+        if(prom===latestProm) {
+            dispatch({
+                type: 'TURN_OFF_NOTIFICATION'
+            })
+         }
 
     }
 }
