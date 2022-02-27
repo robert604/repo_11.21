@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/anecdotes'
+const url = process.env.ON_HEROKU ?
+'http://morning-beyond-server.herokuapp.com/anecdotes' : 'http://localhost:3001/anecdotes'
 
 const getAll = async () => {
   const resp = await axios.get(url)
