@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-const url = process.env.ON_HEROKU ?
-'http://morning-beyond-server.herokuapp.com/anecdotes' : 'http://localhost:3001/anecdotes'
+//const url = process.env.ON_HEROKU ?
+//'http://morning-beyond-server.herokuapp.com/anecdotes' : 'http://localhost:3001/anecdotes'
+const url = 'http://morning-beyond-server.herokuapp.com/anecdotes'
 
 const getAll = async () => {
   try {
