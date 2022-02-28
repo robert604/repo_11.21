@@ -1,14 +1,12 @@
 import axios from 'axios'
-require('dotenv').config()
 
-//const url = process.env.ON_HEROKU ?
-//'http://morning-beyond-server.herokuapp.com/anecdotes' : 'http://localhost:3001/anecdotes'
+//const url = 'http://localhost:3001/anecdotes'
 const url = 'https://morning-beyond-server.herokuapp.com/anecdotes'
 
 const getAll = async () => {
   try {
     const resp = await axios.get(url)
-    console.log('getall',process.env.ON_HEROKU)
+    //console.log('getall--',process.env)
     return resp.data
   } catch(error) {
     console.log('getall error',error)
