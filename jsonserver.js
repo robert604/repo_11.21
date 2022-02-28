@@ -1,9 +1,11 @@
+const express = require('express')
 const jsonServer = require('json-server');
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 const cors = require('cors')
 const server = jsonServer.create()
 
+server.use(express.static('build'))
 server.use(cors())
 server.use(middlewares)
 server.use(router)

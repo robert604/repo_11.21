@@ -1,8 +1,9 @@
 name: Deploy
 
 on:
-  push:
-    branches: [11.21]
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   build:
@@ -15,9 +16,3 @@ jobs:
           heroku_app_name: "morning-beyond-server"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           procfile: "web: npm run jsonserver"
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "morning-beyond-59829"
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          procfile: "web: npm run herokustart"

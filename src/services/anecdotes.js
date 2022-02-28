@@ -1,7 +1,7 @@
 import axios from 'axios'
 
+const url = '/anecdotes'
 //const url = 'http://localhost:3001/anecdotes'
-const url = 'https://morning-beyond-server.herokuapp.com/anecdotes'
 
 const getAll = async () => {
   try {
