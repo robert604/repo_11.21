@@ -4,8 +4,13 @@ const url = process.env.ON_HEROKU ?
 'http://morning-beyond-server.herokuapp.com/anecdotes' : 'http://localhost:3001/anecdotes'
 
 const getAll = async () => {
-  const resp = await axios.get(url)
-  return resp.data
+  try {
+    const resp = await axios.get(url)
+    console.log('getall',resp)
+    return resp.data
+  } catch(error) {
+    console.log('getall error',error)
+  }
 }
 
 const createNew = async (anecdote) => {
