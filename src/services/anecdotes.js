@@ -1,4 +1,5 @@
 import axios from 'axios'
+require('dotenv').config()
 
 //const url = process.env.ON_HEROKU ?
 //'http://morning-beyond-server.herokuapp.com/anecdotes' : 'http://localhost:3001/anecdotes'
