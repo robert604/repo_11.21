@@ -7,7 +7,7 @@ const url = 'https://morning-beyond-server.herokuapp.com/anecdotes'
 const getAll = async () => {
   try {
     const resp = await axios.get(url)
-    console.log('getall',resp)
+    console.log('getall',process.env.ON_HEROKU)
     return resp.data
   } catch(error) {
     console.log('getall error',error)
